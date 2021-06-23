@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MapService } from '../services/map.service';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(
+    private map: MapService
+  ) { }
 
+  ngOnInit(): void{
+    this.map.initMap();
+    this.map.getCurrentPosition();
+  }
 }
