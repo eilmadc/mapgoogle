@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  constructor(
+    private storage: StorageService
+  ) {}
 
+  //Obtener las keys almacenadas en el Storage y array
+  ngOnInit(): void {
+    this.storage.keys().then(locations => {
+      console.log(locations);
+    })
+  }
 }

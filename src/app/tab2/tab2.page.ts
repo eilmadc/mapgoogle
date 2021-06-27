@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MapService } from '../services/map.service';
+import { StorageService } from '../services/storage.service';
+import { AlertComponent } from '../components/alert/alert.component';
 
 @Component({
   selector: 'app-tab2',
@@ -9,11 +11,22 @@ import { MapService } from '../services/map.service';
 export class Tab2Page {
 
   constructor(
-    private map: MapService
+    private map: MapService,
+    private storage: StorageService,
+    public alert: AlertComponent
   ) { }
 
   ngOnInit(): void{
-    this.map.initMap();
-    this.map.getCurrentPosition();
+    this.map.initMap( 41.119076, 1.245313, 'map');
+  }
+
+  getCurrentPosition(){
+    this.map.getCurrentPosition().then( position => {
+      const lat : number= position.coords.latitude;
+      const lng : number= position.coords.longitude;
+      this.map.initMap( lat , lng , 'map');
+      this.storage.saveLocation( 'current Location', lat , lng);
+      this.alert.newAlertLocation( lat , lng );
+    });
   }
 }
