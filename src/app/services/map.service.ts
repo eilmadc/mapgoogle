@@ -37,7 +37,5 @@ export class MapService {
 
   printCurrentPosition = async () => {
     const coordinates = await Geolocation.getCurrentPosition();
-
-    console.log('Current position:', coordinates);
   };
 }

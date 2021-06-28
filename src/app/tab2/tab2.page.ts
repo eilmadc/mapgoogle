@@ -25,7 +25,7 @@ export class Tab2Page {
       const lat : number= position.coords.latitude;
       const lng : number= position.coords.longitude;
       this.map.initMap( lat , lng , 'map');
-      this.storage.saveLocation( 'current Location', lat , lng);
+      //this.storage.saveLocation( 'current Location', lat , lng);
       this.alert.newAlertLocation( lat , lng );
     });
   }

@@ -32,7 +32,7 @@ export class Tab1Page {
     }); */
 
     this.presentToast (
-      "Lat:" +coordinates.coords.latitude.toString() +" - Log:"+ coordinates.coords.longitude.toString()
+      "Lat:" +coordinates.coords.latitude.toString() +" / Lng:"+ coordinates.coords.longitude.toString()
     );
     //Cargo el mapa una vez he obtenido las coordenadas.
     this.loadMap(coordinates);

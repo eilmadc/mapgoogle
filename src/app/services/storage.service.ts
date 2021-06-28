@@ -19,21 +19,41 @@ async saveLocation( name: string , lat: number , lng: number ) {
     })
   });
 }
-  
-async keys() {
-  const { keys } = await Storage.keys();
-  return this.getLocations(keys);
-}
+    
+  async keys() {
+    const  keys  = await Storage.keys();
+    return this.getLocations(keys.keys);
+  }
 
-//Obtener localizaciones
-async getLocations(keys) {
-  for( const key of keys ){
-    const itemsLocalStorage = await Storage.get({ key: 'name' });
-    const item = JSON.parse(itemsLocalStorage.value);
-    console.log('Got item: ', itemsLocalStorage.value);
-    //Almacenar las localizaciones en el array Locations
-    this.locations.push(item);
-    } 
-    return this.locations;
+  //Obtener localizaciones
+  async getLocations(keys) {
+    for( const key of keys ) {
+      const itemsLocalStorage = await Storage.get({ key });
+      const item = JSON.parse(itemsLocalStorage.value);
+
+      //Almacenar las localizaciones en el array Locations
+      this.locations.push(item);
+      } 
+      return this.locations;
+  }
+
+  //Obtener Localizacion
+  async getLocation(key) {
+      const itemsLocalStorage = await Storage.get({ key : `location/${key}`});
+      const item = JSON.parse(itemsLocalStorage.value);
+      return item;
+  }
+
+  async removeLocation(id) {
+    await Storage.remove({ key : `location/${id}` });
+    this.refresh();
+  }
+
+  refresh(){
+    window.location.reload();
+  }
+
+  async clearLocalStorage() {
+    await Storage.clear();
   }
 }
