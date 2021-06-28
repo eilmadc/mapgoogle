@@ -14,5 +14,13 @@
   </ion-header>
   <div id="map"></div>
   <br>
-  <ion-button (click)=getCurrentPosition() expand="block" shape="round">Save My Location</ion-button>
+  
+  <ion-button (click)=getCurrentPosition() expand="block" shape="round">
+    <ion-icon name="save"></ion-icon>
+    &nbsp; Save My Location</ion-button>
+  <br>
+    <ion-button (click)=clearLocalStorage() expand="block" shape="round" color="danger"> 
+    <ion-icon name="nuclear"></ion-icon>
+   &nbsp; Clear Local Storage 
+   </ion-button>
 </ion-content>
