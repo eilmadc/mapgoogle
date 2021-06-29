@@ -4,12 +4,12 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
-  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary: #511252;
+  --ion-color-primary-rgb: 81,18,82;
   --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #471048;
+  --ion-color-primary-tint: #622a63;
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
@@ -74,6 +74,24 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** My Violet **/
+    --ion-color-myviolet: #511252;
+    --ion-color-myviolet-rgb: 81,18,82;
+    --ion-color-myviolet-contrast: #ffffff;
+    --ion-color-myviolet-contrast-rgb: 255,255,255;
+    --ion-color-myviolet-shade: #471048;
+    --ion-color-myviolet-tint: #622a63;
+  
+  
+  .ion-color-myviolet {
+    --ion-color-base: var(--ion-color-myviolet);
+    --ion-color-base-rgb: var(--ion-color-myviolet-rgb);
+    --ion-color-contrast: var(--ion-color-myviolet-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-myviolet-contrast-rgb);
+    --ion-color-shade: var(--ion-color-myviolet-shade);
+    --ion-color-tint: var(--ion-color-myviolet-tint);
+  }
 }
 
 @media (prefers-color-scheme: dark) {

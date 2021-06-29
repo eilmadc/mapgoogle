@@ -10,41 +10,46 @@ declare const google: any;
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+
 //'map' se refiere al #map del html
   @ViewChild('map', { static: false }) mapElement:ElementRef;
   map: any;
   lat: any;
-  long: Location;
+  lng: any;
+
   constructor(
     public toastController: ToastController
   ) {}
+
+  ngOnInit():void{
+    this.getLocation();
+  }
 
   ionViewDidEnter(){
     this.getLocation();
   }
 
   async getLocation() {
-    const coordinates: Position = await Geolocation.getCurrentPosition();
+    const coordinates = await Geolocation.getCurrentPosition();
 
     /*  Otra forma de hacerlo con un promise:
     const coordinates = await Geolocation.getCurrentPosition().then((coordinates) =>{
     console.log(coordinates.coords.latitude.toString()+ coordinates.coords.longitude.toString());
     }); */
-
+    this.lat = coordinates.coords.latitude.toString() ;
+    this.lng = coordinates.coords.longitude.toString() ;
     this.presentToast (
-      "Lat:" +coordinates.coords.latitude.toString() +" / Lng:"+ coordinates.coords.longitude.toString()
+      "Lat:" + this.lat + " / Lng:" + this.lng
     );
+
     //Cargo el mapa una vez he obtenido las coordenadas.
     this.loadMap(coordinates);
-    const lat=coordinates.coords.latitude.toString();
-    const long=coordinates.coords.longitude.toString();
-    console.log(coordinates);
   }
 
   async presentToast(msg: string) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: 2000,
+      duration: 50,
     });
     toast.present();
   }
@@ -56,7 +61,7 @@ export class Tab1Page {
     );
     const mapOptions = {
       center: latLng,
-      zoom: 15,
+      zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       };
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
@@ -70,5 +75,5 @@ export class Tab1Page {
       position: map.getCenter(),
     });
   }
-
 }
+

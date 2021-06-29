@@ -17,7 +17,7 @@ export class Tab2Page {
   ) { }
 
   ngOnInit(): void{
-    this.map.initMap( 41.119076, 1.245313, 'map');
+    this.getCurrentPosition();
   }
 
   getCurrentPosition(){
@@ -28,5 +28,9 @@ export class Tab2Page {
       //this.storage.saveLocation( 'current Location', lat , lng);
       this.alert.newAlertLocation( lat , lng );
     });
+  }
+
+  clearLocalStorage(){
+    this.storage.clearLocalStorage();
   }
 }

@@ -18,7 +18,7 @@ export class MapService {
         lat,
         lng
       },
-      zoom: 11,
+      zoom: 13,
       mapTypeId: 'roadmap'
     });
     const marker = new google.maps.Marker({
